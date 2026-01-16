@@ -58,7 +58,8 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error('Error creating tool:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      const errMsg = error instanceof Error ? error.message : String(error);
+      return NextResponse.json({ error: errMsg }, { status: 500 });
     }
 
     return NextResponse.json({ tool: data }, { status: 201 });

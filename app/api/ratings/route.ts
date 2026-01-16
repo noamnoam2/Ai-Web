@@ -47,7 +47,8 @@ export async function GET(request: NextRequest) {
 
     if (error) {
       console.error('[API] Error fetching ratings:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      const errMsg = error instanceof Error ? error.message : String(error);
+      return NextResponse.json({ error: errMsg }, { status: 500 });
     }
 
     return NextResponse.json({ ratings: ratings || [] });
@@ -131,7 +132,8 @@ export async function POST(request: NextRequest) {
 
       if (error) {
         console.error('[API] Error updating rating:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        const errMsg = error instanceof Error ? error.message : String(error);
+        return NextResponse.json({ error: errMsg }, { status: 500 });
       }
 
       console.log('[API] Rating updated successfully:', data?.id);
@@ -159,7 +161,8 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error('[API] Error creating rating:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      const errMsg = error instanceof Error ? error.message : String(error);
+      return NextResponse.json({ error: errMsg }, { status: 500 });
     }
 
     console.log('[API] Rating created successfully:', data?.id);

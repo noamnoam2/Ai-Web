@@ -173,7 +173,6 @@ export async function GET(request: NextRequest) {
     }
     
     const tools = allTools;
-    const error = null;
 
     console.log(`[API] Fetched ${tools.length} tools from database`);
     
@@ -212,11 +211,6 @@ export async function GET(request: NextRequest) {
           console.log(`[API] Sample tool "${tool.name}": categories =`, tool.categories, `(type: ${typeof tool.categories}, isArray: ${Array.isArray(tool.categories)})`);
         });
       }
-    }
-
-    if (error) {
-      console.error('Error fetching tools:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
     if (!tools || tools.length === 0) {

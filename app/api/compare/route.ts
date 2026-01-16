@@ -31,7 +31,8 @@ export async function GET(request: NextRequest) {
 
     if (error) {
       console.error('Error fetching tools:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      const errMsg = error instanceof Error ? error.message : String(error);
+      return NextResponse.json({ error: errMsg }, { status: 500 });
     }
 
     if (!tools || tools.length === 0) {
