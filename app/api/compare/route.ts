@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 
 export async function GET(request: NextRequest) {
   try {
+    const supabase = getSupabaseClient();
+    
     const searchParams = request.nextUrl.searchParams;
     const slugsParam = searchParams.get('slugs');
 

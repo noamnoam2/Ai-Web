@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 import { ToolWithStats } from '@/lib/types';
 
 // Mock data (same as in tools route)
@@ -97,15 +97,7 @@ export async function GET(
 ) {
   try {
     const { slug } = await params;
-
-    // If Supabase is not configured, return mock data
-    if (!supabase) {
-      const tool = mockTools.find((t) => t.slug === slug);
-      if (!tool) {
-        return NextResponse.json({ error: 'Tool not found' }, { status: 404 });
-      }
-      return NextResponse.json({ tool });
-    }
+    const supabase = getSupabaseClient();
 
     const { data: tool, error: toolError } = await supabase
       .from('tools')

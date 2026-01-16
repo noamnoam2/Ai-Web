@@ -1,26 +1,40 @@
 import { createClient } from '@supabase/supabase-js';
+import type { SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+/**
+ * Get Supabase client for client-side usage (with anon key)
+ * Throws error if env vars are missing (production-ready)
+ */
+export function getSupabaseClient(): SupabaseClient {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-// Create a mock client if Supabase is not configured (for development)
-let supabase: ReturnType<typeof createClient> | null = null;
+  if (!url || !anonKey) {
+    throw new Error(
+      'Missing Supabase env vars: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY'
+    );
+  }
 
-if (supabaseUrl && supabaseAnonKey) {
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
-} else {
-  console.warn('⚠️ Supabase not configured. Using mock data. Please set up .env.local file.');
+  return createClient(url, anonKey);
 }
 
-export { supabase };
-
-// Server-side client with service role key (for admin operations)
-export const getSupabaseAdmin = () => {
+/**
+ * Get Supabase admin client (server-side only, with service role key)
+ * Throws error if env vars are missing (production-ready)
+ */
+export const getSupabaseAdmin = (): SupabaseClient => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!url) {
+    throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL');
+  }
+
   if (!serviceRoleKey) {
     throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY');
   }
-  return createClient(supabaseUrl, serviceRoleKey, {
+
+  return createClient(url, serviceRoleKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,

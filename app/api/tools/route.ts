@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 import { Category, ToolWithStats } from '@/lib/types';
 
 // Mock data for development when Supabase is not configured
@@ -93,85 +93,8 @@ const mockTools: ToolWithStats[] = [
 
 export async function GET(request: NextRequest) {
   try {
-    // If Supabase is not configured, return mock data
-    if (!supabase) {
-      const searchParams = request.nextUrl.searchParams;
-      const query = searchParams.get('query') || '';
-      const category = searchParams.get('category') || '';
-      const pricingParam = searchParams.get('pricing') || '';
-      const pricingTypes = pricingParam ? pricingParam.split(',').filter(p => p.length > 0) : [];
-      
-      let filteredTools = [...mockTools];
-      
-      // Apply search filter
-      if (query) {
-        const lowerQuery = query.toLowerCase().trim();
-        const queryWords = lowerQuery.split(/\s+/).filter(w => w.length > 0);
-        
-        filteredTools = filteredTools.filter((tool) => {
-          const nameLower = tool.name.toLowerCase();
-          const descLower = tool.description.toLowerCase();
-          const categoriesLower = tool.categories.join(' ').toLowerCase();
-          
-          // Check if all query words appear in name, description, or categories
-          return queryWords.every(word => 
-            nameLower.includes(word) || 
-            descLower.includes(word) ||
-            categoriesLower.includes(word)
-          );
-        });
-      }
-      
-      // Apply category filter
-      if (category) {
-        filteredTools = filteredTools.filter((tool) => {
-          const toolCategories = Array.isArray(tool.categories) ? tool.categories : [];
-          return toolCategories.includes(category as Category);
-        });
-        console.log(`[API Mock] Filtered by category "${category}": ${filteredTools.length} tools`);
-      }
-      
-      // Apply pricing filter
-      if (pricingTypes.length > 0) {
-        filteredTools = filteredTools.filter((tool) => {
-          return pricingTypes.includes(tool.pricing_type);
-        });
-        console.log(`[API Mock] Filtered by pricing "${pricingTypes.join(',')}": ${filteredTools.length} tools`);
-      }
-      
-      // Apply sorting
-      const sort = searchParams.get('sort') || 'popular';
-      if (sort === 'popular') {
-        filteredTools.sort((a, b) => {
-          // Popularity score = rating * reviews (higher is better)
-          const scoreA = a.avg_rating * a.total_ratings;
-          const scoreB = b.avg_rating * b.total_ratings;
-          if (scoreB !== scoreA) {
-            return scoreB - scoreA;
-          }
-          // If scores are equal, prefer higher rating
-          return b.avg_rating - a.avg_rating;
-        });
-      } else if (sort === 'rating') {
-        filteredTools.sort((a, b) => {
-          if (b.avg_rating !== a.avg_rating) {
-            return b.avg_rating - a.avg_rating;
-          }
-          return b.total_ratings - a.total_ratings;
-        });
-      } else if (sort === 'reviews') {
-        filteredTools.sort((a, b) => {
-          if (b.total_ratings !== a.total_ratings) {
-            return b.total_ratings - a.total_ratings;
-          }
-          return b.avg_rating - a.avg_rating;
-        });
-      }
-      // 'newest' keeps original order
-      
-      return NextResponse.json({ tools: filteredTools });
-    }
-
+    const supabase = getSupabaseClient();
+    
     const searchParams = request.nextUrl.searchParams;
     const query = searchParams.get('query') || '';
     const category = searchParams.get('category') || '';
