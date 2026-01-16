@@ -409,8 +409,8 @@ export async function GET(request: NextRequest) {
           // Word-by-word matching (if multiple words)
           if (queryWords.length > 1) {
             const nameWords = nameLower.split(/\s+/);
-            const matchingWords = queryWords.filter(qw => 
-              nameWords.some(nw => nw.includes(qw) || qw.includes(nw))
+            const matchingWords = queryWords.filter((qw: string) => 
+              nameWords.some((nw: string) => nw.includes(qw) || qw.includes(nw))
             );
             relevance += matchingWords.length * 15;
           }
