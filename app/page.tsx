@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import SearchBar from '@/components/SearchBar';
 import CategoryChips from '@/components/CategoryChips';
 import ToolCard from '@/components/ToolCard';
