@@ -8,6 +8,7 @@ import LoadingSkeleton from '@/components/LoadingSkeleton';
 import { ToolWithStats, Category, PricingType } from '@/lib/types';
 import Link from 'next/link';
 import PricingFilter from '@/components/PricingFilter';
+import ContactSection from '@/components/ContactSection';
 
 type SortOption = 'popular' | 'newest' | 'rating' | 'reviews';
 
@@ -89,11 +90,12 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            AI Tool Finder
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            AI Tool Founder – Compare & Review AI Tools
           </h1>
-          <p className="text-gray-600 mb-2">
-            Discover and compare AI tools for creators
+          <p className="text-lg text-gray-700 mb-3 max-w-3xl mx-auto">
+            AI Tool Founder is a comparison and review platform for AI tools.
+            Compare features, pricing and ratings, and read real reviews before choosing the right AI tool.
           </p>
           <p className="text-sm text-gray-500">
             By NN group
@@ -193,6 +195,8 @@ export default function Home() {
             )}
           </>
         )}
+        
+        <ContactSection />
       </div>
     </main>
   );

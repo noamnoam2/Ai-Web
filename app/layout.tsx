@@ -3,8 +3,9 @@ import "./globals.css";
 import RTLToggle from "@/components/RTLToggle";
 
 export const metadata: Metadata = {
-  title: "AI Tool Finder - Discover & Compare AI Tools",
-  description: "Find and compare AI tools for video, image, audio, text, and more",
+  title: "AI Tool Founder – Compare & Review AI Tools",
+  description:
+    "AI Tool Founder lets you discover, compare and review AI tools. See ratings, comparisons and real reviews for the best AI tools.",
 };
 
 export default function RootLayout({

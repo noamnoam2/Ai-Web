@@ -463,15 +463,6 @@ export const allTools = [
     starting_price: 15.00,
   },
   {
-    name: 'QuickVid',
-    slug: 'quickvid',
-    description: 'AI tool for quickly creating short-form videos. Optimized for TikTok, Instagram Reels, and YouTube Shorts.',
-    url: 'https://quickvid.ai',
-    categories: ['Video', 'Social/Creators'],
-    pricing_type: 'Freemium',
-    starting_price: 10.00,
-  },
-  {
     name: 'Dubverse',
     slug: 'dubverse',
     description: 'AI video dubbing platform that translates and dubs videos into multiple languages with AI voices.',
@@ -2195,15 +2186,6 @@ export const allTools = [
     starting_price: 15.00,
   },
   {
-    name: 'YouTube Script AI',
-    slug: 'youtube-script-ai',
-    description: 'AI tool for creating YouTube video scripts. Generates engaging scripts optimized for video content.',
-    url: 'https://youtubescript.ai',
-    categories: ['Text', 'Video', 'Social/Creators'],
-    pricing_type: 'Freemium',
-    starting_price: 12.00,
-  },
-  {
     name: 'TikTok Script AI',
     slug: 'tiktok-script-ai',
     description: 'AI script generator for TikTok videos. Creates short, engaging scripts for viral content.',
@@ -3029,11 +3011,11 @@ export const allTools = [
 
   // ========== PRODUCTIVITY / BUSINESS / OTHER TOOLS ==========
   {
-    name: 'Site Planner',
-    slug: 'site-planner',
-    description: 'AI-powered website planning and structure tool. Helps design and organize website layouts, sitemaps, and user flows.',
-    url: 'https://siteplanner.ai',
-    categories: ['Productivity', 'Website/App Builder'],
+    name: 'Lovable',
+    slug: 'lovable',
+    description: 'AI-powered web app builder that creates full-stack applications from natural language descriptions. Build, deploy, and iterate on web apps with AI assistance.',
+    url: 'https://lovable.dev',
+    categories: ['Website/App Builder', 'Code', 'Productivity'],
     pricing_type: 'Freemium',
     starting_price: null,
   },
