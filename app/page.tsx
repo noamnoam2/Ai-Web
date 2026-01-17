@@ -10,7 +10,7 @@ import Link from 'next/link';
 import PricingFilter from '@/components/PricingFilter';
 import ContactSection from '@/components/ContactSection';
 
-type SortOption = 'popular' | 'newest' | 'rating' | 'reviews';
+type SortOption = 'popular' | 'rating' | 'reviews';
 
 export default function Home() {
   const [tools, setTools] = useState<ToolWithStats[]>([]);
@@ -131,17 +131,16 @@ export default function Home() {
           </h2>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <label htmlFor="sort" className="text-sm text-gray-600 font-medium">
+              <label htmlFor="sort" className="text-sm font-medium text-gray-900">
                 Sort by:
               </label>
                 <select
                   id="sort"
                   value={sortBy}
                   onChange={(e) => handleSortChange(e.target.value as SortOption)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="popular">Most Popular</option>
-                  <option value="newest">Newest</option>
                   <option value="rating">Highest Rating</option>
                   <option value="reviews">Most Reviews</option>
                 </select>
