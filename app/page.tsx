@@ -90,21 +90,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="mb-8">
-          <div className="mb-4">
-            <Image
-              src="/logo.png"
-              alt="AI Tool Founder Logo"
-              width={80}
-              height={80}
-              className="object-contain"
-              priority
-            />
-          </div>
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              AI Tool Founder – Compare & Review AI Tools
-            </h1>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            AI Tool Founder – Compare & Review AI Tools
+          </h1>
             <p className="text-lg text-gray-700 mb-3 max-w-3xl mx-auto">
               AI Tool Founder is a comparison and review platform for AI tools.
               Compare features, pricing and ratings, and read real reviews before choosing the right AI tool.
