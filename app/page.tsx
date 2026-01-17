@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import SearchBar from '@/components/SearchBar';
 import CategoryChips from '@/components/CategoryChips';
 import ToolCard from '@/components/ToolCard';
@@ -90,6 +91,16 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="text-center mb-8">
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/logo.png"
+              alt="AI Tool Founder Logo"
+              width={120}
+              height={120}
+              className="object-contain"
+              priority
+            />
+          </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             AI Tool Founder – Compare & Review AI Tools
           </h1>
