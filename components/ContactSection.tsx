@@ -4,7 +4,7 @@ export default function ContactSection() {
   return (
     <div className="mt-12 mb-8 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-        צרו איתנו קשר
+        Contact Us
       </h2>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
         <a
