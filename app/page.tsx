@@ -92,10 +92,9 @@ export default function Home() {
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* NN TOOLS Animated Header */}
         <div className="text-center mb-8">
-          <h1 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-[length:200%_auto] animate-gradient mb-2">
+          <h1 className="text-5xl md:text-6xl font-black text-[#4169E1] mb-2">
             NN TOOLS
           </h1>
-          <div className="h-1 w-32 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-[length:200%_auto] animate-gradient mx-auto rounded-full"></div>
         </div>
 
         <div className="mb-8">
