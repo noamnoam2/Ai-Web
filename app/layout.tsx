@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "AI Tool Founder lets you discover, compare and review AI tools. See ratings, comparisons and real reviews for the best AI tools.",
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+    icon: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 
