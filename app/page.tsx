@@ -90,6 +90,14 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
+        {/* NN TOOLS Animated Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-[length:200%_auto] animate-gradient mb-2">
+            NN TOOLS
+          </h1>
+          <div className="h-1 w-32 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-[length:200%_auto] animate-gradient mx-auto rounded-full"></div>
+        </div>
+
         <div className="mb-8">
           <div className="mb-4">
             <Image
@@ -102,9 +110,9 @@ export default function Home() {
             />
           </div>
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
               AI Tool Founder – Compare & Review AI Tools
-            </h1>
+            </h2>
             <p className="text-lg text-gray-700 mb-3 max-w-3xl mx-auto">
               AI Tool Founder is a comparison and review platform for AI tools.
               Compare features, pricing and ratings, and read real reviews before choosing the right AI tool.

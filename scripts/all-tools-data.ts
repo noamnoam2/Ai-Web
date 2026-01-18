@@ -4195,15 +4195,6 @@ export const allTools = [
     starting_price: 29.00,
   },
   {
-    name: 'Pexels',
-    slug: 'pexels',
-    description: 'Free stock photos and videos. High-quality royalty-free media for projects.',
-    url: 'https://pexels.com',
-    categories: ['Image', 'Video', 'Social/Creators'],
-    pricing_type: 'Free',
-    starting_price: null,
-  },
-  {
     name: 'Pixabay',
     slug: 'pixabay',
     description: 'Free stock media library. Images, videos, music, and sound effects.',
