@@ -3838,6 +3838,15 @@ export const allTools = [
     starting_price: 9.99,
   },
   {
+    name: 'Vmake',
+    slug: 'vmake',
+    description: 'AI-powered video creation and editing platform. Create professional videos with AI assistance.',
+    url: 'https://vmake.com',
+    categories: ['Video', 'Social/Creators', 'Productivity'],
+    pricing_type: 'Freemium',
+    starting_price: null,
+  },
+  {
     name: 'PlayVoice',
     slug: 'playvoice',
     description: 'AI voice generation and cloning tool. Creates natural-sounding voices.',
