@@ -4094,12 +4094,12 @@ export const allTools = [
     starting_price: null,
   },
   {
-    name: 'Toolify',
-    slug: 'toolify',
-    description: 'AI tools discovery and comparison platform. Find the right AI tool for your task.',
-    url: 'https://toolify.ai',
-    categories: ['Productivity'],
-    pricing_type: 'Free',
+    name: 'Nano Bannana',
+    slug: 'nano-bannana',
+    description: 'AI-powered tool for creative projects and productivity tasks.',
+    url: 'https://nanobannana.com',
+    categories: ['Productivity', 'Social/Creators'],
+    pricing_type: 'Freemium',
     starting_price: null,
   },
   {

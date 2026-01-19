@@ -20,6 +20,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
   {
     id: '2',
@@ -37,6 +41,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
   {
     id: '3',
@@ -54,6 +62,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
   {
     id: '4',
@@ -71,6 +83,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
   {
     id: '5',
@@ -88,6 +104,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
 ];
 
@@ -230,7 +250,7 @@ export async function GET(request: NextRequest) {
       // If this becomes a problem, we can batch it
       const { data: allRatings, error: ratingsError } = await supabase
         .from('ratings')
-        .select('tool_id, stars, good_for_creators, worth_money');
+        .select('tool_id, stars, good_for_creators, worth_money, easy_to_use, accurate, reliable, beginner_friendly');
       
       if (ratingsError) {
         console.error('[API] Error fetching ratings:', ratingsError.message);
@@ -254,6 +274,10 @@ export async function GET(request: NextRequest) {
               sum_stars: 0,
               good_for_creators_count: 0,
               worth_money_count: 0,
+              easy_to_use_count: 0,
+              accurate_count: 0,
+              reliable_count: 0,
+              beginner_friendly_count: 0,
             });
           }
           
@@ -262,6 +286,10 @@ export async function GET(request: NextRequest) {
           stats.sum_stars += rating.stars;
           if (rating.good_for_creators) stats.good_for_creators_count++;
           if (rating.worth_money) stats.worth_money_count++;
+          if (rating.easy_to_use) stats.easy_to_use_count++;
+          if (rating.accurate) stats.accurate_count++;
+          if (rating.reliable) stats.reliable_count++;
+          if (rating.beginner_friendly) stats.beginner_friendly_count++;
         });
         
         // Convert to final format
@@ -275,6 +303,18 @@ export async function GET(request: NextRequest) {
           works_in_hebrew_pct: 0, // Not used anymore
           worth_money_pct: stats.total_ratings > 0 
             ? (stats.worth_money_count / stats.total_ratings) * 100 
+            : 0,
+          easy_to_use_pct: stats.total_ratings > 0 
+            ? (stats.easy_to_use_count / stats.total_ratings) * 100 
+            : 0,
+          accurate_pct: stats.total_ratings > 0 
+            ? (stats.accurate_count / stats.total_ratings) * 100 
+            : 0,
+          reliable_pct: stats.total_ratings > 0 
+            ? (stats.reliable_count / stats.total_ratings) * 100 
+            : 0,
+          beginner_friendly_pct: stats.total_ratings > 0 
+            ? (stats.beginner_friendly_count / stats.total_ratings) * 100 
             : 0,
         }));
         
@@ -314,6 +354,10 @@ export async function GET(request: NextRequest) {
           (toolStats?.works_in_hebrew_pct || 0).toString()
         ),
         worth_money_pct: parseFloat((toolStats?.worth_money_pct || 0).toString()),
+        easy_to_use_pct: parseFloat((toolStats?.easy_to_use_pct || 0).toString()),
+        accurate_pct: parseFloat((toolStats?.accurate_pct || 0).toString()),
+        reliable_pct: parseFloat((toolStats?.reliable_pct || 0).toString()),
+        beginner_friendly_pct: parseFloat((toolStats?.beginner_friendly_pct || 0).toString()),
       };
       
       // Debug: Log if tool has ratings

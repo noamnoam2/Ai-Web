@@ -112,7 +112,7 @@ export async function GET(
     // Get stats by calculating from ratings table
     const { data: ratings, error: ratingsError } = await supabase
       .from('ratings')
-      .select('stars, good_for_creators, worth_money')
+      .select('stars, good_for_creators, worth_money, easy_to_use, accurate, reliable, beginner_friendly')
       .eq('tool_id', tool.id);
     
     let stats: any = null;
@@ -121,6 +121,10 @@ export async function GET(
       const avgRating = ratings.reduce((sum: number, r: any) => sum + r.stars, 0) / totalRatings;
       const goodForCreatorsCount = ratings.filter((r: any) => r.good_for_creators).length;
       const worthMoneyCount = ratings.filter((r: any) => r.worth_money).length;
+      const easyToUseCount = ratings.filter((r: any) => r.easy_to_use).length;
+      const accurateCount = ratings.filter((r: any) => r.accurate).length;
+      const reliableCount = ratings.filter((r: any) => r.reliable).length;
+      const beginnerFriendlyCount = ratings.filter((r: any) => r.beginner_friendly).length;
       
       stats = {
         total_ratings: totalRatings,
@@ -128,6 +132,10 @@ export async function GET(
         good_for_creators_pct: (goodForCreatorsCount / totalRatings) * 100,
         works_in_hebrew_pct: 0,
         worth_money_pct: (worthMoneyCount / totalRatings) * 100,
+        easy_to_use_pct: (easyToUseCount / totalRatings) * 100,
+        accurate_pct: (accurateCount / totalRatings) * 100,
+        reliable_pct: (reliableCount / totalRatings) * 100,
+        beginner_friendly_pct: (beginnerFriendlyCount / totalRatings) * 100,
       };
     } else {
       stats = {
@@ -136,6 +144,10 @@ export async function GET(
         good_for_creators_pct: 0,
         works_in_hebrew_pct: 0,
         worth_money_pct: 0,
+        easy_to_use_pct: 0,
+        accurate_pct: 0,
+        reliable_pct: 0,
+        beginner_friendly_pct: 0,
       };
     }
 
@@ -145,6 +157,10 @@ export async function GET(
       avg_rating: parseFloat(stats?.avg_rating || '0'),
       good_for_creators_pct: parseFloat(stats?.good_for_creators_pct || '0'),
       worth_money_pct: parseFloat(stats?.worth_money_pct || '0'),
+      easy_to_use_pct: parseFloat(stats?.easy_to_use_pct || '0'),
+      accurate_pct: parseFloat(stats?.accurate_pct || '0'),
+      reliable_pct: parseFloat(stats?.reliable_pct || '0'),
+      beginner_friendly_pct: parseFloat(stats?.beginner_friendly_pct || '0'),
     };
 
     return NextResponse.json({ tool: toolWithStats });
