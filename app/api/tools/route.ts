@@ -527,18 +527,19 @@ export async function GET(request: NextRequest) {
       // Apply sorting
       if (sort === 'popular') {
         toolsWithStats.sort((a: any, b: any) => {
-          // Popularity score = rating * reviews (higher is better)
+          // Popularity score = rating * reviews (ratio of ratings to reviews)
+          // This gives higher score to tools with both high rating and many reviews
           const scoreA = a.avg_rating * a.total_ratings;
           const scoreB = b.avg_rating * b.total_ratings;
           if (scoreB !== scoreA) {
             return scoreB - scoreA;
           }
-          // If scores are equal, prefer higher rating
-          return b.avg_rating - a.avg_rating;
+          // If scores are equal, sort by total_ratings descending
+          return b.total_ratings - a.total_ratings;
         });
       } else if (sort === 'rating') {
         toolsWithStats.sort((a: any, b: any) => {
-          // Sort by avg_rating descending, then by total_ratings descending
+          // Sort by avg_rating descending (highest first), then by total_ratings descending
           if (b.avg_rating !== a.avg_rating) {
             return b.avg_rating - a.avg_rating;
           }
@@ -582,17 +583,19 @@ export async function GET(request: NextRequest) {
     // Apply sorting for non-search queries
     if (sort === 'popular') {
       toolsWithStats.sort((a: any, b: any) => {
-        // Popularity score = rating * reviews (higher is better)
+        // Popularity score = rating * reviews (ratio of ratings to reviews)
+        // This gives higher score to tools with both high rating and many reviews
         const scoreA = a.avg_rating * a.total_ratings;
         const scoreB = b.avg_rating * b.total_ratings;
         if (scoreB !== scoreA) {
           return scoreB - scoreA;
         }
-        // If scores are equal, prefer higher rating
-        return b.avg_rating - a.avg_rating;
+        // If scores are equal, sort by total_ratings descending
+        return b.total_ratings - a.total_ratings;
       });
     } else if (sort === 'rating') {
       toolsWithStats.sort((a: any, b: any) => {
+        // Sort by avg_rating descending (highest first), then by total_ratings descending
         if (b.avg_rating !== a.avg_rating) {
           return b.avg_rating - a.avg_rating;
         }
