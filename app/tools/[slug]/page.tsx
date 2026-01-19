@@ -276,37 +276,37 @@ export default function ToolDetailPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="text-2xl font-bold text-gray-900">
-                  {tool.good_for_creators_pct.toFixed(0)}%
+                  {tool.good_for_creators_count || 0}
                 </p>
                 <p className="text-sm text-gray-600">Good for creators</p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="text-2xl font-bold text-gray-900">
-                  {tool.worth_money_pct.toFixed(0)}%
+                  {tool.worth_money_count || 0}
                 </p>
                 <p className="text-sm text-gray-600">Worth the money</p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="text-2xl font-bold text-gray-900">
-                  {tool.easy_to_use_pct.toFixed(0)}%
+                  {tool.easy_to_use_count || 0}
                 </p>
                 <p className="text-sm text-gray-600">Easy to use</p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="text-2xl font-bold text-gray-900">
-                  {tool.accurate_pct.toFixed(0)}%
+                  {tool.accurate_count || 0}
                 </p>
                 <p className="text-sm text-gray-600">Accurate</p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="text-2xl font-bold text-gray-900">
-                  {tool.reliable_pct.toFixed(0)}%
+                  {tool.reliable_count || 0}
                 </p>
                 <p className="text-sm text-gray-600">Reliable</p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="text-2xl font-bold text-gray-900">
-                  {tool.beginner_friendly_pct.toFixed(0)}%
+                  {tool.beginner_friendly_count || 0}
                 </p>
                 <p className="text-sm text-gray-600">Beginner friendly</p>
               </div>

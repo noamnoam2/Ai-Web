@@ -316,6 +316,12 @@ export async function GET(request: NextRequest) {
           beginner_friendly_pct: stats.total_ratings > 0 
             ? (stats.beginner_friendly_count / stats.total_ratings) * 100 
             : 0,
+          good_for_creators_count: stats.good_for_creators_count || 0,
+          worth_money_count: stats.worth_money_count || 0,
+          easy_to_use_count: stats.easy_to_use_count || 0,
+          accurate_count: stats.accurate_count || 0,
+          reliable_count: stats.reliable_count || 0,
+          beginner_friendly_count: stats.beginner_friendly_count || 0,
         }));
         
         console.log(`[API] Calculated stats for ${allStats.length} tools with ratings`);
@@ -358,6 +364,12 @@ export async function GET(request: NextRequest) {
         accurate_pct: parseFloat((toolStats?.accurate_pct || 0).toString()),
         reliable_pct: parseFloat((toolStats?.reliable_pct || 0).toString()),
         beginner_friendly_pct: parseFloat((toolStats?.beginner_friendly_pct || 0).toString()),
+        good_for_creators_count: toolStats?.good_for_creators_count || 0,
+        worth_money_count: toolStats?.worth_money_count || 0,
+        easy_to_use_count: toolStats?.easy_to_use_count || 0,
+        accurate_count: toolStats?.accurate_count || 0,
+        reliable_count: toolStats?.reliable_count || 0,
+        beginner_friendly_count: toolStats?.beginner_friendly_count || 0,
       };
       
       // Debug: Log if tool has ratings

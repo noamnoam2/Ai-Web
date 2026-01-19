@@ -156,6 +156,12 @@ export async function GET(
         accurate_pct: (accurateCount / totalRatings) * 100,
         reliable_pct: (reliableCount / totalRatings) * 100,
         beginner_friendly_pct: (beginnerFriendlyCount / totalRatings) * 100,
+        good_for_creators_count: goodForCreatorsCount,
+        worth_money_count: worthMoneyCount,
+        easy_to_use_count: easyToUseCount,
+        accurate_count: accurateCount,
+        reliable_count: reliableCount,
+        beginner_friendly_count: beginnerFriendlyCount,
       };
     } else {
       stats = {
@@ -168,6 +174,12 @@ export async function GET(
         accurate_pct: 0,
         reliable_pct: 0,
         beginner_friendly_pct: 0,
+        good_for_creators_count: 0,
+        worth_money_count: 0,
+        easy_to_use_count: 0,
+        accurate_count: 0,
+        reliable_count: 0,
+        beginner_friendly_count: 0,
       };
     }
 
@@ -181,6 +193,12 @@ export async function GET(
       accurate_pct: parseFloat(stats?.accurate_pct || '0'),
       reliable_pct: parseFloat(stats?.reliable_pct || '0'),
       beginner_friendly_pct: parseFloat(stats?.beginner_friendly_pct || '0'),
+      good_for_creators_count: stats?.good_for_creators_count || 0,
+      worth_money_count: stats?.worth_money_count || 0,
+      easy_to_use_count: stats?.easy_to_use_count || 0,
+      accurate_count: stats?.accurate_count || 0,
+      reliable_count: stats?.reliable_count || 0,
+      beginner_friendly_count: stats?.beginner_friendly_count || 0,
     };
 
     return NextResponse.json({ tool: toolWithStats });

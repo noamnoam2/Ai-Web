@@ -49,6 +49,12 @@ export interface ToolWithStats extends Tool {
   accurate_pct: number;
   reliable_pct: number;
   beginner_friendly_pct: number;
+  good_for_creators_count: number;
+  worth_money_count: number;
+  easy_to_use_count: number;
+  accurate_count: number;
+  reliable_count: number;
+  beginner_friendly_count: number;
 }
 
 export interface RatingInput {
