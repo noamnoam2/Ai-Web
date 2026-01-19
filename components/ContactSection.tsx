@@ -17,9 +17,10 @@ export default function ContactSection() {
           <Instagram className="w-6 h-6 text-gray-900" />
         </a>
         <a
-          href="mailto:noamharelnim@gmail.com"
-          className="w-12 h-12 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors shadow-sm"
-          aria-label="Email"
+          href="mailto:noamharelnim@gmail.com?subject=Contact from AI Tool Founder"
+          className="w-12 h-12 bg-white border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors shadow-sm cursor-pointer"
+          aria-label="Email noamharelnim@gmail.com"
+          title="noamharelnim@gmail.com"
         >
           <Mail className="w-6 h-6 text-gray-900" />
         </a>
