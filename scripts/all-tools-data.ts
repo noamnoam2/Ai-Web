@@ -3838,15 +3838,6 @@ export const allTools = [
     starting_price: 9.99,
   },
   {
-    name: 'VoiceDub',
-    slug: 'voicedub',
-    description: 'AI video dubbing platform. Translates and dubs videos with AI voices.',
-    url: 'https://voicedub.com',
-    categories: ['Audio', 'Video', 'Social/Creators'],
-    pricing_type: 'Freemium',
-    starting_price: 15.00,
-  },
-  {
     name: 'PlayVoice',
     slug: 'playvoice',
     description: 'AI voice generation and cloning tool. Creates natural-sounding voices.',
