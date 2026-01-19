@@ -132,6 +132,12 @@ const mockTools: ToolWithStats[] = [
     accurate_pct: 0,
     reliable_pct: 0,
     beginner_friendly_pct: 0,
+    good_for_creators_count: 0,
+    worth_money_count: 0,
+    easy_to_use_count: 0,
+    accurate_count: 0,
+    reliable_count: 0,
+    beginner_friendly_count: 0,
   },
 ];
 
