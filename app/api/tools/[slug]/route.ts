@@ -20,6 +20,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
   {
     id: '2',
@@ -37,6 +41,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
   {
     id: '3',
@@ -54,6 +62,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
   {
     id: '4',
@@ -71,6 +83,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
   {
     id: '5',
@@ -88,6 +104,10 @@ const mockTools: ToolWithStats[] = [
     good_for_creators_pct: 0,
     works_in_hebrew_pct: 0,
     worth_money_pct: 0,
+    easy_to_use_pct: 0,
+    accurate_pct: 0,
+    reliable_pct: 0,
+    beginner_friendly_pct: 0,
   },
 ];
 
