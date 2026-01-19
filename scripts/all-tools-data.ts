@@ -4094,15 +4094,6 @@ export const allTools = [
     starting_price: null,
   },
   {
-    name: 'Nano Bannana',
-    slug: 'nano-bannana',
-    description: 'AI-powered tool for creative projects and productivity tasks.',
-    url: 'https://nanobannana.com',
-    categories: ['Productivity', 'Social/Creators'],
-    pricing_type: 'Freemium',
-    starting_price: null,
-  },
-  {
     name: 'AITopTools',
     slug: 'aitoptools',
     description: 'Top AI tools directory. Discover the best AI tools ranked by popularity.',
