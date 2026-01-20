@@ -32,10 +32,16 @@ function getLogoUrlFromUrl(url: string): string {
 export default function ToolCard({ tool }: ToolCardProps) {
   const [imageError, setImageError] = useState(false);
   const [favorite, setFavorite] = useState(false);
+  const [currentLogoUrl, setCurrentLogoUrl] = useState<string>('');
   
   // Always try to get a logo URL - use existing or generate from URL
-  const logoUrl = tool.logo_url || getLogoUrlFromUrl(tool.url);
-  const shouldShowImage = logoUrl && !imageError;
+  useEffect(() => {
+    const logoUrl = tool.logo_url || getLogoUrlFromUrl(tool.url);
+    setCurrentLogoUrl(logoUrl);
+    setImageError(false);
+  }, [tool.logo_url, tool.url]);
+  
+  const shouldShowImage = currentLogoUrl && !imageError;
   
   useEffect(() => {
     setFavorite(isFavorite(tool.id));
@@ -55,30 +61,31 @@ export default function ToolCard({ tool }: ToolCardProps) {
             {shouldShowImage ? (
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center overflow-hidden border border-gray-200 flex-shrink-0">
                 <img
-                  src={logoUrl}
+                  src={currentLogoUrl}
                   alt={`${tool.name} logo`}
                   className="w-full h-full object-contain p-1"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
-                    // Try fallback to Google Favicon if Clearbit fails
-                    if (logoUrl.includes('logo.clearbit.com') && !img.src.includes('google.com')) {
+                    // Try fallback to Google Favicon if current URL fails
+                    if (!img.src.includes('google.com')) {
                       try {
                         const domain = new URL(tool.url).hostname.replace('www.', '');
                         const fallbackUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-                        img.src = fallbackUrl;
-                        return; // Don't set error yet, try fallback first
+                        if (img.src !== fallbackUrl) {
+                          img.src = fallbackUrl;
+                          return; // Don't set error yet, try fallback first
+                        }
                       } catch {
                         setImageError(true);
                       }
-                    } else {
-                      setImageError(true);
                     }
+                    setImageError(true);
                   }}
                   onLoad={() => {
                     // Image loaded successfully
-                    if (imageError) setImageError(false);
+                    setImageError(false);
                   }}
                 />
               </div>
