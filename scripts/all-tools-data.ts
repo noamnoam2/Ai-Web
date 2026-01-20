@@ -56,7 +56,17 @@ export const allTools = [
     categories: ['Video', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 5.99,
-  },{
+  },
+  {
+    name: 'DeepBrain AI',
+    slug: 'deepbrain-ai',
+    description: 'AI video generation with realistic avatars. Creates professional videos with AI presenters for various use cases.',
+    url: 'https://deepbrain.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 30.00,
+  },
+  {
     name: 'Kaiber',
     slug: 'kaiber',
     description: 'AI video generation tool that transforms images and text into animated videos. Popular for music videos and creative projects.',
@@ -199,7 +209,17 @@ export const allTools = [
     categories: ['Video', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 23.00,
-  },{
+  },
+  {
+    name: 'Rephrase.ai',
+    slug: 'rephrase-ai',
+    description: 'AI video platform for creating personalized videos with digital avatars. Focuses on marketing and sales.',
+    url: 'https://rephrase.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 25.00,
+  },
+  {
     name: 'Steve.ai',
     slug: 'steve-ai',
     description: 'AI video creation platform that converts text to animated or live-action videos. Great for explainer videos.',
@@ -270,7 +290,26 @@ export const allTools = [
     categories: ['Video', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 9.00,
-  },{
+  },
+  {
+    name: 'GreenScreen AI',
+    slug: 'greenscreen-ai',
+    description: 'AI-powered green screen removal and background replacement for videos. Fast and accurate processing.',
+    url: 'https://greenscreen.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
+    name: 'AutoCut',
+    slug: 'autocut',
+    description: 'AI video editor that automatically cuts and edits videos. Removes silence and creates smooth transitions.',
+    url: 'https://autocut.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 15.00,
+  },
+  {
     name: 'Shortify',
     slug: 'shortify',
     description: 'AI tool for creating short-form videos from long content. Optimizes for social media platforms.',
@@ -413,7 +452,17 @@ export const allTools = [
     categories: ['Video', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'Lumeflow',
+    slug: 'lumeflow',
+    description: 'AI-powered video creation and editing platform. Create professional videos with AI assistance.',
+    url: 'https://lumeflow.com',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: null,
+  },
+  {
     name: 'Dubverse',
     slug: 'dubverse',
     description: 'AI video dubbing platform that translates and dubs videos into multiple languages with AI voices.',
@@ -511,7 +560,26 @@ export const allTools = [
     categories: ['Video', 'Audio', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 11.99,
-  },{
+  },
+  {
+    name: 'Peech',
+    slug: 'peech',
+    description: 'AI video creation platform for businesses. Generates professional videos with automated editing.',
+    url: 'https://peech.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 25.00,
+  },
+  {
+    name: 'VlogNow AI',
+    slug: 'vlognow-ai',
+    description: 'AI tool for creating vlog-style videos. Automatically edits and enhances video content.',
+    url: 'https://vlognow.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 15.00,
+  },
+  {
     name: 'Zubtitle',
     slug: 'zubtitle',
     description: 'AI subtitle generator for videos. Automatically creates and styles captions for social media.',
@@ -519,7 +587,35 @@ export const allTools = [
     categories: ['Video', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 19.00,
-  },{
+  },
+  {
+    name: 'Cutlabs',
+    slug: 'cutlabs',
+    description: 'AI video editing platform that automatically edits videos. Removes silence and creates engaging content.',
+    url: 'https://cutlabs.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 12.00,
+  },
+  {
+    name: 'AutoReframe',
+    slug: 'autoreframe',
+    description: 'AI tool for automatically reframing videos for different aspect ratios. Perfect for multi-platform content.',
+    url: 'https://autoreframe.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
+    name: 'FilmForge',
+    slug: 'filmforge',
+    description: 'AI video creation tool for generating professional videos. Includes templates and automated editing.',
+    url: 'https://filmforge.ai',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 15.00,
+  },
+  {
     name: 'Media.io',
     slug: 'media-io',
     description: 'Online media toolkit with AI features for video, audio, and image editing. All-in-one solution.',
@@ -727,7 +823,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'DreamStudio',
+    slug: 'dreamstudio',
+    description: 'Stability AI\'s official image generation platform. Uses Stable Diffusion with advanced controls and customization.',
+    url: 'https://dreamstudio.ai',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
     name: 'RunDiffusion',
     slug: 'rundiffusion',
     description: 'Cloud-based Stable Diffusion platform with GPU access. Allows running custom models and training.',
@@ -906,7 +1012,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 9.00,
-  },{
+  },
+  {
+    name: 'Pixelcut',
+    slug: 'pixelcut',
+    description: 'AI photo editor for creating professional product photos. Includes background removal and enhancement.',
+    url: 'https://pixelcut.com',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 9.99,
+  },
+  {
     name: 'Let\'s Enhance',
     slug: 'lets-enhance',
     description: 'AI image upscaling and enhancement tool. Improves image quality and resolution using machine learning.',
@@ -932,7 +1048,17 @@ export const allTools = [
     categories: ['Image'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'ImgUpscaler',
+    slug: 'imgupscaler',
+    description: 'AI image upscaling service. Enhances image resolution up to 4x with high quality.',
+    url: 'https://imgupscaler.com',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 9.99,
+  },
+  {
     name: 'Remini',
     slug: 'remini',
     description: 'AI photo enhancer that improves image quality, restores old photos, and enhances faces.',
@@ -976,7 +1102,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 6.99,
-  },{
+  },
+  {
+    name: 'Lensa',
+    slug: 'lensa',
+    description: 'AI photo editor with magic avatars feature. Creates artistic portraits and enhances photos.',
+    url: 'https://lensa.ai',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 3.99,
+  },
+  {
     name: 'PicsArt',
     slug: 'picsart',
     description: 'Photo and video editor with AI features. Includes filters, effects, and AI-powered editing tools.',
@@ -1029,7 +1165,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'Sketch2Code',
+    slug: 'sketch2code',
+    description: 'Microsoft\'s AI tool that converts hand-drawn sketches into HTML code. Transforms designs to code automatically.',
+    url: 'https://sketch2code.azurewebsites.net',
+    categories: ['Image', 'Code'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
     name: 'Mockplus AI',
     slug: 'mockplus-ai',
     description: 'UI/UX design tool with AI features. Creates prototypes and designs with AI assistance.',
@@ -1136,7 +1282,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 9.99,
-  },{
+  },
+  {
+    name: 'PaintsChainer',
+    slug: 'paintschainer',
+    description: 'AI tool for automatically coloring line art. Transforms sketches into colored illustrations.',
+    url: 'https://paintschainer.app',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
     name: 'Deep Dream Generator',
     slug: 'deep-dream-generator',
     description: 'AI art generator using Google\'s DeepDream algorithm. Creates surreal and artistic images.',
@@ -1261,7 +1417,17 @@ export const allTools = [
     categories: ['Image'],
     pricing_type: 'Freemium',
     starting_price: 15.00,
-  },{
+  },
+  {
+    name: 'Glyphr AI',
+    slug: 'glyphr-ai',
+    description: 'AI tool for font design and generation. Creates custom fonts with AI assistance.',
+    url: 'https://glyphr.ai',
+    categories: ['Image'],
+    pricing_type: 'Freemium',
+    starting_price: 20.00,
+  },
+  {
     name: 'Typeface AI',
     slug: 'typeface-ai',
     description: 'AI typography tool for generating and customizing fonts. Creates unique typefaces automatically.',
@@ -1278,7 +1444,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 10.00,
-  },{
+  },
+  {
+    name: 'Storyboard AI',
+    slug: 'storyboard-ai',
+    description: 'AI tool for creating storyboards for videos and films. Generates visual storyboards from scripts.',
+    url: 'https://storyboardai.com',
+    categories: ['Image', 'Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 15.00,
+  },
+  {
     name: 'Manga AI',
     slug: 'manga-ai',
     description: 'AI tool for creating manga-style artwork. Generates Japanese comic-style illustrations.',
@@ -1286,7 +1462,26 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 9.99,
-  },{
+  },
+  {
+    name: 'AnimeGAN',
+    slug: 'animegan',
+    description: 'AI tool that transforms photos into anime-style artwork. Creates anime-style illustrations.',
+    url: 'https://animegan.ai',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
+    name: 'Waifu Diffusion',
+    slug: 'waifu-diffusion',
+    description: 'AI image generation model trained on anime-style artwork. Creates anime-style illustrations.',
+    url: 'https://waifu-diffusion.github.io',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
     name: 'Pose AI',
     slug: 'pose-ai',
     description: 'AI tool for generating human poses and figures. Creates reference poses for artists and designers.',
@@ -1294,7 +1489,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 10.00,
-  },{
+  },
+  {
+    name: 'Human Generator AI',
+    slug: 'human-generator-ai',
+    description: 'AI tool for generating realistic human images. Creates diverse human figures for design projects.',
+    url: 'https://humangenerator.ai',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 12.00,
+  },
+  {
     name: 'Clothing AI',
     slug: 'clothing-ai',
     description: 'AI tool for designing and visualizing clothing. Generates fashion designs and apparel mockups.',
@@ -1320,7 +1525,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 10.00,
-  },{
+  },
+  {
+    name: 'Outfit AI',
+    slug: 'outfit-ai',
+    description: 'AI fashion styling tool. Suggests outfit combinations and creates fashion looks.',
+    url: 'https://outfitai.com',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 9.99,
+  },
+  {
     name: 'Shoes AI',
     slug: 'shoes-ai',
     description: 'AI tool for designing and visualizing shoes. Generates shoe designs and 3D mockups.',
@@ -1600,7 +1815,17 @@ export const allTools = [
     categories: ['Text', 'Productivity'],
     pricing_type: 'Freemium',
     starting_price: 49.00,
-  },{
+  },
+  {
+    name: 'GrowthBar',
+    slug: 'growthbar',
+    description: 'AI SEO tool for content creation. Generates blog posts optimized for search rankings.',
+    url: 'https://growthbar.se',
+    categories: ['Text', 'Productivity'],
+    pricing_type: 'Paid',
+    starting_price: 29.00,
+  },
+  {
     name: 'MarketMuse',
     slug: 'marketmuse',
     description: 'AI content strategy platform. Analyzes content gaps and suggests topics for better SEO performance.',
@@ -1761,7 +1986,17 @@ export const allTools = [
     categories: ['Image', 'Text', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 29.00,
-  },{
+  },
+  {
+    name: 'Writesparkle',
+    slug: 'writesparkle',
+    description: 'AI writing tool for creating engaging content. Helps improve writing quality and engagement.',
+    url: 'https://writesparkle.ai',
+    categories: ['Text', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 9.99,
+  },
+  {
     name: 'Tugan.ai',
     slug: 'tugan-ai',
     description: 'AI email generator. Converts URLs into email newsletters automatically.',
@@ -1796,7 +2031,26 @@ export const allTools = [
     categories: ['Text', 'Social/Creators'],
     pricing_type: 'Paid',
     starting_price: 37.00,
-  },{
+  },
+  {
+    name: 'Quicklines',
+    slug: 'quicklines',
+    description: 'AI cold email writer. Generates personalized cold emails for outreach campaigns.',
+    url: 'https://quicklines.ai',
+    categories: ['Text', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 19.00,
+  },
+  {
+    name: 'MailMaestro',
+    slug: 'mailmaestro',
+    description: 'AI email assistant for Gmail. Helps write better emails with tone and clarity suggestions.',
+    url: 'https://mailmaestro.ai',
+    categories: ['Text', 'Productivity'],
+    pricing_type: 'Freemium',
+    starting_price: 9.99,
+  },
+  {
     name: 'Postwise',
     slug: 'postwise',
     description: 'AI Twitter content generator. Creates engaging tweets and threads for social media.',
@@ -1894,7 +2148,17 @@ export const allTools = [
     categories: ['Text', 'Social/Creators'],
     pricing_type: 'Paid',
     starting_price: 99.00,
-  },{
+  },
+  {
+    name: 'Thread Creator AI',
+    slug: 'thread-creator-ai',
+    description: 'AI tool for creating Twitter threads. Generates engaging multi-tweet threads automatically.',
+    url: 'https://threadcreator.ai',
+    categories: ['Text', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
     name: 'Blogify',
     slug: 'blogify',
     description: 'AI blog post generator. Creates SEO-optimized blog posts with research and citations.',
@@ -1920,7 +2184,26 @@ export const allTools = [
     categories: ['Text', 'Video', 'Audio', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 15.00,
-  },{
+  },
+  {
+    name: 'TikTok Script AI',
+    slug: 'tiktok-script-ai',
+    description: 'AI script generator for TikTok videos. Creates short, engaging scripts for viral content.',
+    url: 'https://tiktokscript.ai',
+    categories: ['Text', 'Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
+    name: 'Reels Script AI',
+    slug: 'reels-script-ai',
+    description: 'AI script generator for Instagram Reels. Creates engaging short-form video scripts.',
+    url: 'https://reelsscript.ai',
+    categories: ['Text', 'Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
     name: 'Headline AI',
     slug: 'headline-ai',
     description: 'AI headline generator. Creates compelling headlines for articles, ads, and social media.',
@@ -1928,7 +2211,17 @@ export const allTools = [
     categories: ['Text', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 9.99,
-  },{
+  },
+  {
+    name: 'Story Generator AI',
+    slug: 'story-generator-ai',
+    description: 'AI story generator for creative writing. Creates stories, plots, and narratives automatically.',
+    url: 'https://storygenerator.ai',
+    categories: ['Text', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
     name: 'Novel AI',
     slug: 'novel-ai',
     description: 'AI storytelling platform for creative writing. Helps authors write novels and stories.',
@@ -1954,7 +2247,27 @@ export const allTools = [
     categories: ['Text', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 9.99,
-  },// ========== AUDIO / VOICE / MUSIC TOOLS ==========
+  },
+  {
+    name: 'Roleplay AI',
+    slug: 'roleplay-ai',
+    description: 'AI roleplay platform for interactive conversations. Create and chat with custom AI characters.',
+    url: 'https://roleplay.ai',
+    categories: ['Text', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
+    name: 'Plot Generator AI',
+    slug: 'plot-generator-ai',
+    description: 'AI tool for generating story plots and ideas. Creates creative story concepts automatically.',
+    url: 'https://plotgenerator.ai',
+    categories: ['Text', 'Social/Creators'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+
+  // ========== AUDIO / VOICE / MUSIC TOOLS ==========
   {
     name: 'ElevenLabs',
     slug: 'elevenlabs',
@@ -2035,7 +2348,17 @@ export const allTools = [
     categories: ['Audio', 'Code'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'OpenVoice',
+    slug: 'openvoice',
+    description: 'Open-source voice cloning and generation tool. Creates realistic voice clones from short samples.',
+    url: 'https://openvoice.io',
+    categories: ['Audio', 'Code'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
     name: 'Descript TTS',
     slug: 'descript-tts',
     description: 'Text-to-speech feature in Descript. Creates natural voiceovers with AI voices.',
@@ -2205,7 +2528,17 @@ export const allTools = [
     categories: ['Audio', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 5.00,
-  },{
+  },
+  {
+    name: 'TuneFlow',
+    slug: 'tuneflow',
+    description: 'AI music production software. Creates and edits music with AI assistance.',
+    url: 'https://tuneflow.com',
+    categories: ['Audio', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 9.99,
+  },
+  {
     name: 'Udio',
     slug: 'udio',
     description: 'AI music generation platform. Creates original songs from text prompts.',
@@ -2312,7 +2645,35 @@ export const allTools = [
     categories: ['Audio', 'Social/Creators'],
     pricing_type: 'Paid',
     starting_price: 9.99,
-  },{
+  },
+  {
+    name: 'VoiceOver AI',
+    slug: 'voiceover-ai',
+    description: 'AI voiceover generation tool. Creates professional voiceovers for videos and presentations.',
+    url: 'https://voiceover.ai',
+    categories: ['Audio', 'Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 12.00,
+  },
+  {
+    name: 'AI Singer',
+    slug: 'ai-singer',
+    description: 'AI singing voice generator. Creates singing voices from text with melody control.',
+    url: 'https://aisinger.ai',
+    categories: ['Audio', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 15.00,
+  },
+  {
+    name: 'Voice Cloning AI',
+    slug: 'voice-cloning-ai',
+    description: 'AI voice cloning platform. Creates realistic voice clones from short audio samples.',
+    url: 'https://voicecloning.ai',
+    categories: ['Audio', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 20.00,
+  },
+  {
     name: 'Podcast AI',
     slug: 'podcast-ai',
     description: 'AI podcast creation tool. Generates podcast episodes with AI hosts and content.',
@@ -2329,7 +2690,18 @@ export const allTools = [
     categories: ['Audio', 'Productivity'],
     pricing_type: 'Freemium',
     starting_price: 5.99,
-  },// ========== CODE / DEV / NO-CODE TOOLS ==========
+  },
+  {
+    name: 'Narration AI',
+    slug: 'narration-ai',
+    description: 'AI narration generator for videos and presentations. Creates professional voiceovers automatically.',
+    url: 'https://narration.ai',
+    categories: ['Audio', 'Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+
+  // ========== CODE / DEV / NO-CODE TOOLS ==========
   {
     name: 'Cursor',
     slug: 'cursor',
@@ -2428,7 +2800,17 @@ export const allTools = [
     categories: ['Code', 'Productivity'],
     pricing_type: 'Freemium',
     starting_price: 0.00,
-  },{
+  },
+  {
+    name: 'Mutable AI',
+    slug: 'mutable-ai',
+    description: 'AI code generation platform. Creates full-stack applications from natural language descriptions.',
+    url: 'https://mutable.ai',
+    categories: ['Code', 'Productivity'],
+    pricing_type: 'Freemium',
+    starting_price: 15.00,
+  },
+  {
     name: 'Continue.dev',
     slug: 'continue-dev',
     description: 'Open-source AI coding assistant. Self-hosted alternative to GitHub Copilot.',
@@ -2951,7 +3333,17 @@ export const allTools = [
     categories: ['Text', 'Productivity'],
     pricing_type: 'Freemium',
     starting_price: 50.00,
-  },{
+  },
+  {
+    name: 'HR AI',
+    slug: 'hr-ai',
+    description: 'AI HR platform. Automates HR tasks including recruitment, onboarding, and employee management.',
+    url: 'https://hr-ai.com',
+    categories: ['Productivity'],
+    pricing_type: 'Paid',
+    starting_price: 99.00,
+  },
+  {
     name: 'HireVue',
     slug: 'hirevue',
     description: 'AI video interviewing platform. Conducts and analyzes video interviews with AI.',
@@ -3132,7 +3524,18 @@ export const allTools = [
     categories: ['Text', 'Code', 'Productivity'],
     pricing_type: 'Free',
     starting_price: null,
-  },// ========== VIDEO / CREATOR / SHORTS (Additional) ==========
+  },
+  {
+    name: 'OpenAssistant',
+    slug: 'openassistant',
+    description: 'Open-source conversational AI. Community-driven assistant project.',
+    url: 'https://open-assistant.io',
+    categories: ['Text', 'Productivity'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+
+  // ========== VIDEO / CREATOR / SHORTS (Additional) ==========
   {
     name: 'Opus.pro',
     slug: 'opus-pro',
@@ -3231,7 +3634,17 @@ export const allTools = [
     categories: ['Video', 'Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 9.99,
-  },{
+  },
+  {
+    name: 'Swapface',
+    slug: 'swapface',
+    description: 'Real-time face swap for videos. Live face swapping with AI technology.',
+    url: 'https://swapface.org',
+    categories: ['Video', 'Image', 'Social/Creators'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
     name: 'FaceMagic',
     slug: 'facemagic',
     description: 'AI face swap and face animation tool. Creates realistic face swaps and animations.',
@@ -3239,7 +3652,17 @@ export const allTools = [
     categories: ['Video', 'Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 9.99,
-  },{
+  },
+  {
+    name: 'Wonder Studio',
+    slug: 'wonder-studio',
+    description: 'AI video production platform. Automates video editing and effects with AI.',
+    url: 'https://wonder.studio',
+    categories: ['Video', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 20.00,
+  },
+  {
     name: 'HyperHuman',
     slug: 'hyperhuman',
     description: 'AI human video generation. Creates realistic human videos from text and images.',
@@ -3267,7 +3690,17 @@ export const allTools = [
     categories: ['Image', 'Code', 'Social/Creators'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'InvokeAI',
+    slug: 'invokeai',
+    description: 'Professional Stable Diffusion interface. Advanced image generation with control features.',
+    url: 'https://invoke.ai',
+    categories: ['Image', 'Code', 'Social/Creators'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
     name: 'ComfyUI',
     slug: 'comfyui',
     description: 'Node-based Stable Diffusion interface. Advanced workflow editor for image generation.',
@@ -3329,7 +3762,17 @@ export const allTools = [
     categories: ['Image', 'Social/Creators'],
     pricing_type: 'Freemium',
     starting_price: 4.99,
-  },{
+  },
+  {
+    name: 'Magic Eraser AI',
+    slug: 'magic-eraser-ai',
+    description: 'AI tool for removing unwanted objects from photos. Clean up images automatically.',
+    url: 'https://magiceraser.ai',
+    categories: ['Image', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 5.00,
+  },
+  {
     name: 'Erase.bg',
     slug: 'erase-bg',
     description: 'AI background removal tool. Instantly removes backgrounds from images.',
@@ -3393,7 +3836,26 @@ export const allTools = [
     categories: ['Video', 'Social/Creators', 'Productivity'],
     pricing_type: 'Freemium',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'PlayVoice',
+    slug: 'playvoice',
+    description: 'AI voice generation and cloning tool. Creates natural-sounding voices.',
+    url: 'https://playvoice.com',
+    categories: ['Audio', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
+    name: 'EchoLabs',
+    slug: 'echolabs',
+    description: 'AI voice synthesis platform. Creates realistic voiceovers and voice clones.',
+    url: 'https://echolabs.io',
+    categories: ['Audio', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 20.00,
+  },
+  {
     name: 'Meta Voicebox',
     slug: 'meta-voicebox',
     description: 'Meta\'s AI voice generation model. Creates natural speech from text.',
@@ -3428,7 +3890,17 @@ export const allTools = [
     categories: ['Audio', 'Code', 'Social/Creators'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'VoiceCraft',
+    slug: 'voicecraft',
+    description: 'AI voice cloning and generation tool. Creates realistic voice clones.',
+    url: 'https://voicecraft.ai',
+    categories: ['Audio', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 15.00,
+  },
+  {
     name: 'RVC',
     slug: 'rvc',
     description: 'Retrieval-based Voice Conversion. Open-source voice cloning and conversion tool.',
@@ -3445,7 +3917,17 @@ export const allTools = [
     categories: ['Audio', 'Code', 'Social/Creators'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'MusicLM',
+    slug: 'musiclm',
+    description: 'Google\'s AI music generation model. Creates music from text descriptions.',
+    url: 'https://google-research.github.io',
+    categories: ['Audio', 'Social/Creators'],
+    pricing_type: 'Trial',
+    starting_price: null,
+  },
+  {
     name: 'AudioCraft',
     slug: 'audiocraft',
     description: 'Meta\'s AI audio generation framework. Creates music and audio from text.',
@@ -3527,7 +4009,17 @@ export const allTools = [
     categories: ['Code', 'Productivity'],
     pricing_type: 'Freemium',
     starting_price: 0.00,
-  },{
+  },
+  {
+    name: 'Fireworks AI',
+    slug: 'fireworks-ai',
+    description: 'Fast AI inference platform. Low-latency LLM serving for production.',
+    url: 'https://fireworks.ai',
+    categories: ['Code', 'Productivity'],
+    pricing_type: 'Freemium',
+    starting_price: 0.00,
+  },
+  {
     name: 'OctoAI',
     slug: 'octoai',
     description: 'AI infrastructure platform. Deploy and run AI models with ease.',
@@ -3564,7 +4056,17 @@ export const allTools = [
     categories: ['Productivity'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'AIScout',
+    slug: 'aiscout',
+    description: 'AI tools directory and discovery platform. Search and compare AI tools.',
+    url: 'https://aiscout.net',
+    categories: ['Productivity'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
     name: 'AI Valley',
     slug: 'ai-valley',
     description: 'AI tools marketplace and directory. Discover and compare AI solutions.',
@@ -3590,7 +4092,26 @@ export const allTools = [
     categories: ['Productivity'],
     pricing_type: 'Free',
     starting_price: null,
-  },{
+  },
+  {
+    name: 'AIList',
+    slug: 'ailist',
+    description: 'Curated list of AI tools. Discover and explore AI solutions.',
+    url: 'https://ailist.co',
+    categories: ['Productivity'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
+    name: 'AI Hunter',
+    slug: 'ai-hunter',
+    description: 'AI tools discovery platform. Find and test AI tools for various tasks.',
+    url: 'https://aihunter.io',
+    categories: ['Productivity'],
+    pricing_type: 'Free',
+    starting_price: null,
+  },
+  {
     name: 'AIbase',
     slug: 'aibase',
     description: 'AI tools database and directory. Comprehensive collection of AI tools.',
@@ -3816,7 +4337,17 @@ export const allTools = [
     categories: ['Productivity'],
     pricing_type: 'Paid',
     starting_price: 70.00,
-  },{
+  },
+  {
+    name: 'Power BI AI',
+    slug: 'power-bi-ai',
+    description: 'Business intelligence platform with AI. Data analysis and visualization with AI.',
+    url: 'https://powerbi.microsoft.com',
+    categories: ['Productivity'],
+    pricing_type: 'Freemium',
+    starting_price: 10.00,
+  },
+  {
     name: 'Qlik Sense AI',
     slug: 'qlik-sense-ai',
     description: 'Analytics platform with AI features. Data discovery and visualization.',
@@ -3968,7 +4499,17 @@ export const allTools = [
     categories: ['Image', 'Productivity'],
     pricing_type: 'Paid',
     starting_price: 0.00,
-  },// ========== WEBSITE / APP BUILDER TOOLS ==========
+  },
+  {
+    name: 'Zebra Medical Vision',
+    slug: 'zebra-medical-vision',
+    description: 'Medical imaging AI platform. Analyze medical images with AI.',
+    url: 'https://zebramed.com',
+    categories: ['Image', 'Productivity'],
+    pricing_type: 'Paid',
+    starting_price: 0.00,
+  },
+  // ========== WEBSITE / APP BUILDER TOOLS ==========
   {
     name: 'Webflow',
     slug: 'webflow',
