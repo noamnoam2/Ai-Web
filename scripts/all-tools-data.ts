@@ -220,15 +220,6 @@ export const allTools = [
     starting_price: 25.00,
   },
   {
-    name: 'Hour One',
-    slug: 'hour-one',
-    description: 'AI video generation with realistic virtual humans. Creates professional videos for training and marketing.',
-    url: 'https://hourone.ai',
-    categories: ['Video', 'Social/Creators'],
-    pricing_type: 'Freemium',
-    starting_price: 25.00,
-  },
-  {
     name: 'Steve.ai',
     slug: 'steve-ai',
     description: 'AI video creation platform that converts text to animated or live-action videos. Great for explainer videos.',
