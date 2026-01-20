@@ -24,66 +24,37 @@ export default function RatingStars({
     lg: 'w-6 h-6',
   };
 
-  const handleClick = (value: number, e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!interactive || !onRatingChange) return;
-    
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const isLeftHalf = x < rect.width / 2;
-    
-    const ratingValue = isLeftHalf ? value - 0.5 : value;
-    onRatingChange(ratingValue);
+  const handleClick = (value: number) => {
+    if (interactive && onRatingChange) {
+      onRatingChange(value);
+    }
   };
 
   return (
     <div className="flex items-center gap-1">
       <div className="flex items-center">
-        {[1, 2, 3, 4, 5].map((value) => {
-          const isFilled = value <= rating;
-          const isHalfFilled = !isFilled && (value - 0.5) <= rating;
-          
-          return (
-            <div key={value} className="relative inline-block">
-              {/* Background star (always gray) */}
-              <Star
-                className={cn(
-                  sizeClasses[size],
-                  "fill-gray-200 text-gray-200"
-                )}
-              />
-              
-              {/* Foreground star (filled or half-filled) */}
-              <div
-                className={cn(
-                  "absolute top-0 left-0 overflow-hidden",
-                  isHalfFilled ? "w-1/2" : isFilled ? "w-full" : "w-0"
-                )}
-                style={{ direction: 'ltr' }}
-              >
-                <Star
-                  className={cn(
-                    sizeClasses[size],
-                    "fill-yellow-400 text-yellow-400"
-                  )}
-                />
-              </div>
-              
-              {/* Interactive button */}
-              {interactive && (
-                <button
-                  type="button"
-                  onClick={(e) => handleClick(value, e)}
-                  className={cn(
-                    "absolute inset-0 cursor-pointer",
-                    "hover:opacity-20 hover:bg-yellow-200 transition-opacity"
-                  )}
-                  style={{ zIndex: 10 }}
-                  title={`Click left for ${value - 0.5} stars, right for ${value} stars`}
-                />
+        {[1, 2, 3, 4, 5].map((value) => (
+          <button
+            key={value}
+            type="button"
+            onClick={() => handleClick(value)}
+            disabled={!interactive}
+            className={cn(
+              "transition-colors",
+              interactive && "cursor-pointer hover:scale-110",
+              !interactive && "cursor-default"
+            )}
+          >
+            <Star
+              className={cn(
+                sizeClasses[size],
+                value <= Math.round(rating)
+                  ? "fill-yellow-400 text-yellow-400"
+                  : "fill-gray-200 text-gray-200"
               )}
-            </div>
-          );
-        })}
+            />
+          </button>
+        ))}
       </div>
       <span className="text-sm text-gray-600 ml-1">
         {rating.toFixed(1)}
