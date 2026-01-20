@@ -1,94 +1,127 @@
-import { allTools } from './all-tools-data';
-import * as fs from 'fs';
-import * as path from 'path';
+import "dotenv/config";
+import { createClient } from "@supabase/supabase-js";
 
-// List of slugs to remove (tools without accessible images)
-const slugsToRemove = [
-  'deepbrain-ai',
-  'rephrase-ai',
-  'greenscreen-ai',
-  'autocut',
-  'lumeflow',
-  'peech',
-  'vlognow-ai',
-  'cutlabs',
-  'autoreframe',
-  'filmforge',
-  'dreamstudio',
-  'pixelcut',
-  'imgupscaler',
-  'lensa',
-  'sketch2code',
-  'paintschainer',
-  'glyphr-ai',
-  'storyboard-ai',
-  'animegan',
-  'waifu-diffusion',
-  'human-generator-ai',
-  'outfit-ai',
-  'growthbar',
-  'writesparkle',
-  'quicklines',
-  'mailmaestro',
-  'thread-creator-ai',
-  'tiktok-script-ai',
-  'reels-script-ai',
-  'story-generator-ai',
-  'roleplay-ai',
-  'plot-generator-ai',
-  'openvoice',
-  'tuneflow',
-  'voiceover-ai',
-  'ai-singer',
-  'voice-cloning-ai',
-  'narration-ai',
-  'mutable-ai',
-  'hr-ai',
-  'openassistant',
-  'swapface',
-  'wonder-studio',
-  'invokeai',
-  'magic-eraser-ai',
-  'playvoice',
-  'echolabs',
-  'voicecraft',
-  'musiclm',
-  'fireworks-ai',
-  'aiscout',
-  'ailist',
-  'ai-hunter',
-  'power-bi-ai',
-  'zebra-medical-vision',
-];
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
-// Filter out tools to remove
-const filteredTools = allTools.filter(tool => !slugsToRemove.includes(tool.slug));
-
-console.log(`Original tools: ${allTools.length}`);
-console.log(`Tools to remove: ${slugsToRemove.length}`);
-console.log(`Filtered tools: ${filteredTools.length}`);
-
-// Read the file
-const filePath = path.join(__dirname, 'all-tools-data.ts');
-let fileContent = fs.readFileSync(filePath, 'utf-8');
-
-// Remove each tool entry
-for (const slug of slugsToRemove) {
-  // Find the tool entry - it's between { and }, and may span multiple lines
-  // We'll use a regex to match the entire tool object
-  const toolRegex = new RegExp(
-    `\\s*\\{[^}]*slug:\\s*['"]${slug}['"][^}]*\\},?\\s*`,
-    'gs'
-  );
-  
-  fileContent = fileContent.replace(toolRegex, '');
+// Helper function to generate logo URL from tool URL
+function getLogoUrlFromUrl(url: string): string {
+  try {
+    const domain = new URL(url).hostname.replace('www.', '');
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+  } catch {
+    try {
+      const domain = url.replace(/^https?:\/\//, '').replace(/^www\./, '').split('/')[0];
+      return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+    } catch {
+      return '';
+    }
+  }
 }
 
-// Clean up double commas and empty lines
-fileContent = fileContent.replace(/,\s*,/g, ',');
-fileContent = fileContent.replace(/\n\s*\n\s*\n/g, '\n\n');
+// Check if image URL is valid
+async function checkImageUrl(url: string): Promise<boolean> {
+  try {
+    const response = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(5000) });
+    return response.ok && response.headers.get('content-type')?.startsWith('image/');
+  } catch {
+    return false;
+  }
+}
 
-// Write back
-fs.writeFileSync(filePath, fileContent, 'utf-8');
+async function removeToolsWithoutImages() {
+  console.log('Checking tools for missing images...\n');
+  
+  // Fetch all tools
+  const { data: allTools, error: fetchError } = await supabase
+    .from('tools')
+    .select('id, name, slug, url, logo_url');
 
-console.log('✓ Removed tools from all-tools-data.ts');
+  if (fetchError) {
+    console.error('Error fetching tools:', fetchError);
+    return;
+  }
+
+  console.log(`Found ${allTools?.length || 0} total tools\n`);
+
+  const toolsToDelete: Array<{ id: string; name: string; slug: string; reason: string }> = [];
+
+  // Check each tool
+  for (const tool of allTools || []) {
+    let hasValidImage = false;
+    let reason = '';
+
+    // First check if there's a logo_url
+    if (tool.logo_url) {
+      const isValid = await checkImageUrl(tool.logo_url);
+      if (isValid) {
+        hasValidImage = true;
+      } else {
+        reason = 'logo_url exists but image is invalid';
+      }
+    }
+
+    // If no logo_url or logo_url is invalid, try to generate one from URL
+    if (!hasValidImage && tool.url) {
+      const generatedUrl = getLogoUrlFromUrl(tool.url);
+      if (generatedUrl) {
+        const isValid = await checkImageUrl(generatedUrl);
+        if (isValid) {
+          hasValidImage = true;
+        } else {
+          reason = reason || 'generated logo URL is invalid';
+        }
+      } else {
+        reason = reason || 'cannot generate logo URL from tool URL';
+      }
+    }
+
+    // If still no valid image, mark for deletion
+    if (!hasValidImage) {
+      toolsToDelete.push({
+        id: tool.id,
+        name: tool.name,
+        slug: tool.slug,
+        reason: reason || 'no logo_url and cannot generate from URL'
+      });
+    }
+  }
+
+  console.log(`Found ${toolsToDelete.length} tools without valid images:\n`);
+  toolsToDelete.forEach((tool) => {
+    console.log(`  - ${tool.name} (${tool.slug}): ${tool.reason}`);
+  });
+
+  if (toolsToDelete.length === 0) {
+    console.log('\n✅ All tools have valid images!');
+    return;
+  }
+
+  console.log(`\n⚠️  About to delete ${toolsToDelete.length} tools.`);
+  console.log('This will also delete all ratings associated with these tools.\n');
+
+  // Delete the tools
+  let deleted = 0;
+  let errors = 0;
+
+  for (const tool of toolsToDelete) {
+    const { error: deleteError } = await supabase
+      .from('tools')
+      .delete()
+      .eq('id', tool.id);
+
+    if (deleteError) {
+      console.error(`  ❌ Error deleting ${tool.name}:`, deleteError.message);
+      errors++;
+    } else {
+      console.log(`  ✓ Deleted: ${tool.name}`);
+      deleted++;
+    }
+  }
+
+  console.log(`\n✅ Done! Deleted ${deleted} tools, ${errors} errors.`);
+}
+
+removeToolsWithoutImages().catch(console.error);
