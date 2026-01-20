@@ -4186,15 +4186,6 @@ export const allTools = [
     starting_price: 29.00,
   },
   {
-    name: 'Pixabay',
-    slug: 'pixabay',
-    description: 'Free stock media library. Images, videos, music, and sound effects.',
-    url: 'https://pixabay.com',
-    categories: ['Image', 'Video', 'Audio', 'Social/Creators'],
-    pricing_type: 'Free',
-    starting_price: null,
-  },
-  {
     name: 'Unsplash',
     slug: 'unsplash',
     description: 'Free high-resolution photos. Beautiful images for creative projects.',

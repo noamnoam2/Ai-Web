@@ -415,6 +415,26 @@ export async function GET(request: NextRequest) {
       const searchQuery = query.trim().toLowerCase();
       const queryWords = searchQuery.split(/\s+/).filter(w => w.length > 0);
       
+      // Create synonym map for better search matching
+      const synonyms: { [key: string]: string[] } = {
+        'ai': ['artificial intelligence', 'machine learning', 'ml', 'neural', 'intelligent'],
+        'video': ['video', 'videos', 'movie', 'movies', 'film', 'films', 'clip', 'clips'],
+        'maker': ['maker', 'creator', 'builder', 'generator', 'editor', 'editing', 'creation', 'build'],
+        'image': ['image', 'images', 'picture', 'pictures', 'photo', 'photos', 'graphic', 'graphics'],
+        'audio': ['audio', 'sound', 'music', 'voice', 'podcast'],
+        'text': ['text', 'writing', 'write', 'content', 'article', 'blog'],
+        'code': ['code', 'coding', 'programming', 'developer', 'development'],
+      };
+      
+      // Expand query words with synonyms
+      const expandedWords = new Set<string>();
+      queryWords.forEach(word => {
+        expandedWords.add(word);
+        if (synonyms[word]) {
+          synonyms[word].forEach(syn => expandedWords.add(syn));
+        }
+      });
+      
       // Debug: Log search details
       if (searchQuery.includes('artl')) {
         console.log(`[API DEBUG] Searching for "${searchQuery}" in ${toolsWithStats.length} tools`);
@@ -437,34 +457,63 @@ export async function GET(request: NextRequest) {
           const categoriesLower = categoriesArray.join(' ').toLowerCase();
           const slugLower = (tool.slug || '').toLowerCase();
           
+          // Combine all searchable text
+          const searchableText = `${nameLower} ${descLower} ${categoriesLower} ${slugLower}`;
+          
           // Check if the full query appears anywhere (most important)
           const fullQueryMatch = nameLower.includes(searchQuery) || 
                                  descLower.includes(searchQuery) ||
                                  categoriesLower.includes(searchQuery) ||
-                                 slugLower.includes(searchQuery);
+                                 slugLower.includes(searchQuery) ||
+                                 searchableText.includes(searchQuery);
           
-          // Also check if any query word appears (for multi-word searches)
-          const wordMatch = queryWords.length > 0 && queryWords.some(word => 
+          // Check if all query words appear (for phrases like "AI VIDEO MAKER")
+          const allWordsMatch = queryWords.length > 0 && queryWords.every(word => 
             nameLower.includes(word) || 
             descLower.includes(word) ||
             categoriesLower.includes(word) ||
-            slugLower.includes(word)
+            slugLower.includes(word) ||
+            searchableText.includes(word)
           );
           
-          const matches = fullQueryMatch || wordMatch;
+          // Check if any query word appears (for partial matches)
+          const anyWordMatch = queryWords.length > 0 && queryWords.some(word => 
+            nameLower.includes(word) || 
+            descLower.includes(word) ||
+            categoriesLower.includes(word) ||
+            slugLower.includes(word) ||
+            searchableText.includes(word)
+          );
           
-          // Debug for Artlist
-          if (searchQuery.includes('artl') && nameLower.includes('artlist')) {
-            console.log(`[API DEBUG] Artlist match check:`, {
-              name: tool.name,
-              nameLower,
-              searchQuery,
-              fullQueryMatch,
-              wordMatch,
-              matches,
-              nameIncludes: nameLower.includes(searchQuery)
-            });
+          // Check synonyms
+          const synonymMatch = Array.from(expandedWords).some(word =>
+            searchableText.includes(word)
+          );
+          
+          // Smart category matching - if searching for "AI VIDEO MAKER", match Video category tools
+          let categoryMatch = false;
+          if (queryWords.some(w => ['video', 'movie', 'film', 'clip'].includes(w)) && 
+              categoriesArray.includes('Video')) {
+            categoryMatch = true;
           }
+          if (queryWords.some(w => ['image', 'picture', 'photo', 'graphic'].includes(w)) && 
+              categoriesArray.includes('Image')) {
+            categoryMatch = true;
+          }
+          if (queryWords.some(w => ['audio', 'sound', 'music', 'voice'].includes(w)) && 
+              categoriesArray.includes('Audio')) {
+            categoryMatch = true;
+          }
+          if (queryWords.some(w => ['text', 'writing', 'content', 'article'].includes(w)) && 
+              categoriesArray.includes('Text')) {
+            categoryMatch = true;
+          }
+          if (queryWords.some(w => ['code', 'coding', 'programming', 'developer'].includes(w)) && 
+              categoriesArray.includes('Code')) {
+            categoryMatch = true;
+          }
+          
+          const matches = fullQueryMatch || allWordsMatch || (anyWordMatch && categoryMatch) || synonymMatch;
           
           return matches;
         })
@@ -475,8 +524,10 @@ export async function GET(request: NextRequest) {
           const categoriesLower = tool.categories.join(' ').toLowerCase();
           const slugLower = tool.slug.toLowerCase();
           const searchLower = query.trim().toLowerCase();
+          const searchableText = `${nameLower} ${descLower} ${categoriesLower} ${slugLower}`;
           
           let relevance = 0;
+          
           // Exact name match gets highest score
           if (nameLower === searchLower) relevance += 100;
           else if (nameLower.startsWith(searchLower)) relevance += 50;
@@ -486,19 +537,50 @@ export async function GET(request: NextRequest) {
           if (slugLower === searchLower) relevance += 90;
           else if (slugLower.includes(searchLower)) relevance += 25;
           
-          // Description match
-          if (descLower.includes(searchLower)) relevance += 10;
+          // Full query in description
+          if (descLower.includes(searchLower)) relevance += 15;
           
-          // Category match
-          if (categoriesLower.includes(searchLower)) relevance += 20;
+          // Full query in categories
+          if (categoriesLower.includes(searchLower)) relevance += 25;
+          
+          // All query words match (for phrases like "AI VIDEO MAKER")
+          const allWordsInName = queryWords.every(word => nameLower.includes(word));
+          const allWordsInDesc = queryWords.every(word => descLower.includes(word));
+          const allWordsInCategories = queryWords.every(word => categoriesLower.includes(word));
+          
+          if (allWordsInName) relevance += 40;
+          if (allWordsInDesc) relevance += 20;
+          if (allWordsInCategories) relevance += 30;
           
           // Word-by-word matching (if multiple words)
           if (queryWords.length > 1) {
             const nameWords = nameLower.split(/\s+/);
             const matchingWords = queryWords.filter((qw: string) => 
-              nameWords.some((nw: string) => nw.includes(qw) || qw.includes(nw))
+              nameWords.some((nw: string) => nw.includes(qw) || qw.includes(nw)) ||
+              nameLower.includes(qw) ||
+              descLower.includes(qw) ||
+              categoriesLower.includes(qw)
             );
             relevance += matchingWords.length * 15;
+            
+            // Bonus for matching multiple words
+            if (matchingWords.length === queryWords.length) {
+              relevance += 20;
+            }
+          }
+          
+          // Category relevance boost
+          if (queryWords.some(w => ['video', 'movie', 'film', 'clip'].includes(w)) && 
+              tool.categories.includes('Video')) {
+            relevance += 25;
+          }
+          if (queryWords.some(w => ['image', 'picture', 'photo', 'graphic'].includes(w)) && 
+              tool.categories.includes('Image')) {
+            relevance += 25;
+          }
+          if (queryWords.some(w => ['maker', 'creator', 'builder', 'generator'].includes(w)) && 
+              (descLower.includes('create') || descLower.includes('generate') || descLower.includes('make'))) {
+            relevance += 20;
           }
           
           return { ...tool, _relevance: relevance };
