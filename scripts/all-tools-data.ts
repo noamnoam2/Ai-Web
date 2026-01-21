@@ -3249,14 +3249,6 @@ export const allTools = [
     pricing_type: 'Paid',
     starting_price: 29.00},
   {
-    name: 'Unsplash',
-    slug: 'unsplash',
-    description: 'Free high-resolution photos. Beautiful images for creative projects.',
-    url: 'https://unsplash.com',
-    categories: ['Image', 'Social/Creators'],
-    pricing_type: 'Free',
-    starting_price: null},
-  {
     name: 'Bing Chat',
     slug: 'bing-chat',
     description: 'Microsoft\'s AI chat assistant powered by GPT-4. Free access to advanced AI conversations.',
