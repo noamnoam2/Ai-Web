@@ -3281,14 +3281,6 @@ export const allTools = [
     pricing_type: 'Free',
     starting_price: null},
   {
-    name: 'Duolingo AI',
-    slug: 'duolingo-ai',
-    description: 'Language learning app with AI features. Personalized lessons and practice.',
-    url: 'https://duolingo.com',
-    categories: ['Text', 'Productivity'],
-    pricing_type: 'Freemium',
-    starting_price: 6.99},
-  {
     name: 'Coursera AI',
     slug: 'coursera-ai',
     description: 'Online courses platform with AI features. Personalized learning paths and recommendations.',
