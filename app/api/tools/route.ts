@@ -665,10 +665,15 @@ export async function GET(request: NextRequest) {
     // Apply sorting for non-search queries
     if (sort === 'popular') {
       toolsWithStats.sort((a: any, b: any) => {
-        // Popularity score = rating * reviews (ratio of ratings to reviews)
-        // This gives higher score to tools with both high rating and many reviews
-        const scoreA = a.avg_rating * a.total_ratings;
-        const scoreB = b.avg_rating * b.total_ratings;
+        // Popularity score = total_ratings / avg_rating (ratio of ratings to score)
+        // This prioritizes tools with many ratings relative to their score
+        // Tools with more ratings relative to their score are more popular
+        const scoreA = a.total_ratings > 0 && a.avg_rating > 0 
+          ? a.total_ratings / a.avg_rating 
+          : 0;
+        const scoreB = b.total_ratings > 0 && b.avg_rating > 0 
+          ? b.total_ratings / b.avg_rating 
+          : 0;
         if (scoreB !== scoreA) {
           return scoreB - scoreA;
         }
