@@ -558,7 +558,38 @@ export async function GET(request: NextRequest) {
           
           return { ...tool, _relevance: relevance };
         })
-        .sort((a: any, b: any) => b._relevance - a._relevance)
+        .sort((a: any, b: any) => {
+          // Primary sort: by relevance (highest first) - this is the most important for search
+          if (b._relevance !== a._relevance) {
+            return b._relevance - a._relevance;
+          }
+          // Secondary sort: if relevance is equal, use rating/popularity as tie-breaker
+          // This ensures that among equally relevant results, better-rated tools appear first
+          if (sort === 'popular') {
+            const scoreA = a.total_ratings > 0 && a.avg_rating > 0 
+              ? a.total_ratings / a.avg_rating 
+              : 0;
+            const scoreB = b.total_ratings > 0 && b.avg_rating > 0 
+              ? b.total_ratings / b.avg_rating 
+              : 0;
+            if (scoreB !== scoreA) {
+              return scoreB - scoreA;
+            }
+            return b.total_ratings - a.total_ratings;
+          } else if (sort === 'rating') {
+            if (b.avg_rating !== a.avg_rating) {
+              return b.avg_rating - a.avg_rating;
+            }
+            return b.total_ratings - a.total_ratings;
+          } else if (sort === 'reviews') {
+            if (b.total_ratings !== a.total_ratings) {
+              return b.total_ratings - a.total_ratings;
+            }
+            return b.avg_rating - a.avg_rating;
+          }
+          // For 'newest' or default, just use relevance
+          return 0;
+        })
         .map(({ _relevance, ...tool }: any) => tool); // Remove relevance score
       
       // Apply category filter after search if needed
@@ -579,37 +610,8 @@ export async function GET(request: NextRequest) {
         console.log(`[API] After search, filtered by pricing "${pricingTypes.join(',')}": ${toolsWithStats.length} tools`);
       }
       
-      // Apply sorting
-      if (sort === 'popular') {
-        toolsWithStats.sort((a: any, b: any) => {
-          // Popularity score = rating * reviews (ratio of ratings to reviews)
-          // This gives higher score to tools with both high rating and many reviews
-          const scoreA = a.avg_rating * a.total_ratings;
-          const scoreB = b.avg_rating * b.total_ratings;
-          if (scoreB !== scoreA) {
-            return scoreB - scoreA;
-          }
-          // If scores are equal, sort by total_ratings descending
-          return b.total_ratings - a.total_ratings;
-        });
-      } else if (sort === 'rating') {
-        toolsWithStats.sort((a: any, b: any) => {
-          // Sort by avg_rating descending (highest first), then by total_ratings descending
-          if (b.avg_rating !== a.avg_rating) {
-            return b.avg_rating - a.avg_rating;
-          }
-          return b.total_ratings - a.total_ratings;
-        });
-      } else if (sort === 'reviews') {
-        toolsWithStats.sort((a: any, b: any) => {
-          // Sort by total_ratings descending, then by avg_rating descending
-          if (b.total_ratings !== a.total_ratings) {
-            return b.total_ratings - a.total_ratings;
-          }
-          return b.avg_rating - a.avg_rating;
-        });
-      }
-      // For 'newest', keep relevance-based sorting from search
+      // For search queries, we keep relevance-based sorting (already applied above)
+      // The sort parameter is only used as a tie-breaker when relevance scores are equal
       
       // Apply pagination after filtering
       const paginatedTools = toolsWithStats.slice(offset, offset + limit);
