@@ -176,6 +176,12 @@ export default function Home() {
                 Favorites
               </Link>
               <Link
+                href="/top-tools"
+                className="text-blue-600 hover:text-blue-700 font-medium"
+              >
+                Top Tools
+              </Link>
+              <Link
                 href="/compare"
                 className="text-blue-600 hover:text-blue-700 font-medium"
               >
