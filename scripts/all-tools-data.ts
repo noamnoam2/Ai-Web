@@ -369,6 +369,14 @@ export const allTools = [
     pricing_type: 'Freemium',
     starting_price: null},
   {
+    name: 'Dubbing AI',
+    slug: 'dubbing-ai',
+    description: 'AI-powered video dubbing platform that translates and dubs videos into multiple languages with natural-sounding AI voices. Professional dubbing solution for content creators.',
+    url: 'https://dubbing.ai',
+    categories: ['Video', 'Audio', 'Social/Creators'],
+    pricing_type: 'Freemium',
+    starting_price: 19.00},
+  {
     name: 'Dubverse',
     slug: 'dubverse',
     description: 'AI video dubbing platform that translates and dubs videos into multiple languages with AI voices.',
