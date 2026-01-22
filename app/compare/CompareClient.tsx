@@ -141,6 +141,8 @@ export default function CompareClient() {
                 {favorites.length > 0 && (
                   <button
                     onClick={() => {
+                      // Refresh favorites when opening the dropdown
+                      setFavorites(getFavorites());
                       setShowFavorites(!showFavorites);
                       setShowSearch(false);
                     }}
@@ -185,23 +187,32 @@ export default function CompareClient() {
           {showFavorites && (
             <div className="mb-4">
               <div className="bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                {favorites
-                  .filter((tool) => !selectedSlugs.includes(tool.slug))
-                  .map((tool) => (
+                {(() => {
+                  const currentFavorites = getFavorites();
+                  const availableFavorites = currentFavorites.filter((tool) => !selectedSlugs.includes(tool.slug));
+                  
+                  if (availableFavorites.length === 0) {
+                    return (
+                      <div className="px-4 py-3 text-gray-500 text-center">
+                        No favorites available to add
+                      </div>
+                    );
+                  }
+                  
+                  return availableFavorites.map((tool) => (
                     <button
                       key={tool.id}
-                      onClick={() => addTool(tool.slug)}
-                      className="w-full text-left px-4 py-3 hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
+                      onClick={() => {
+                        addTool(tool.slug);
+                        setShowFavorites(false);
+                      }}
+                      className="w-full text-left px-4 py-3 hover:bg-gray-50 border-b border-gray-100 last:border-b-0 transition-colors"
                     >
                       <div className="font-medium text-gray-900">{tool.name}</div>
                       <div className="text-sm text-gray-600">{tool.description}</div>
                     </button>
-                  ))}
-                {favorites.filter((tool) => !selectedSlugs.includes(tool.slug)).length === 0 && (
-                  <div className="px-4 py-3 text-gray-500 text-center">
-                    No favorites available to add
-                  </div>
-                )}
+                  ));
+                })()}
               </div>
             </div>
           )}

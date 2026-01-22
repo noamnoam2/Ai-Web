@@ -2783,14 +2783,6 @@ export const allTools = [
     url: 'https://librechat.ai',
     categories: ['Text', 'Productivity'],
     pricing_type: 'Free',
-    starting_price: null},
-  {
-    name: 'ChatUI',
-    slug: 'chatui',
-    description: 'Open-source chat interface for AI models. Beautiful and customizable UI.',
-    url: 'https://github.com/huggingface/chat-ui',
-    categories: ['Text', 'Code', 'Productivity'],
-    pricing_type: 'Free',
     starting_price: null},// ========== VIDEO / CREATOR / SHORTS (Additional) ==========
   {
     name: 'Opus.pro',
