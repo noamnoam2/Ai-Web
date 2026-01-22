@@ -2912,14 +2912,6 @@ export const allTools = [
     pricing_type: 'Free',
     starting_price: null},
   {
-    name: 'Automatic1111',
-    slug: 'automatic1111',
-    description: 'Popular Stable Diffusion Web UI. Feature-rich interface for image generation.',
-    url: 'https://github.com/AUTOMATIC1111/stable-diffusion-webui',
-    categories: ['Image', 'Code', 'Social/Creators'],
-    pricing_type: 'Free',
-    starting_price: null},
-  {
     name: 'Fooocus-MRE',
     slug: 'fooocus-mre',
     description: 'Modified version of Fooocus with additional features. Enhanced image generation capabilities.',
